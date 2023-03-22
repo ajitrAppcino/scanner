@@ -28,6 +28,9 @@ app.post('/scan', async (req, res) => {
 
     console.log("============== create reader ==============");
 
+    if(!reader){
+        reader = await BarcodeReader.createInstance();
+    }
 
     // const reader = await (pReader = pReader || Dynamsoft.DBR.BarcodeReader.createInstance());
     console.log("============== decode base64 ==============");
@@ -49,8 +52,6 @@ app.listen(5000, async (req, res) => {
     console.log('server started on port 5000');
 
     BarcodeReader.license = "DLS2eyJvcmdhbml6YXRpb25JRCI6IjIwMDAwMSJ9"
-    
-    reader = await BarcodeReader.createInstance();
     // console.log(Dynamsoft);
 
 });
